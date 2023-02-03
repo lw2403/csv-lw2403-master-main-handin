@@ -2,7 +2,7 @@
 #### Name: CSV Parser
 #### Description: Built generic comma-separated value (CSV) parser library and search utility in Java
 #### Login & Hours: lwang58; ~18hours 
-#### Github Link: 
+#### Github Link: https://github.com/lw2403/csv-lw2403-master-main-handin.git
 
 ## High level design decisions
 ### Classes & Interface
@@ -100,6 +100,8 @@ choose program, input 1/2/3/4:
    1
    
 input csv file path:
+
+/Users/aw/Documents/GitHub/csv-lw2403-master-main/data/stars/ten-star.csv
 
 input the first row is header(y/n): 
 
