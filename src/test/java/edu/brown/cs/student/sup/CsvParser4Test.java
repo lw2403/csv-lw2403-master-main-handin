@@ -24,9 +24,8 @@ public class CsvParser4Test {
     } catch (FactoryFailureException | QueryParserFailureException | CsvParseFailureException e) {
       Assertions.fail(e);
     }
-    Assertions.assertEquals(
-        "TenStarEntity{starID='0', properName='Sol', x=0.0, y=0.0, z=0.0}",
-        searchResult.get(0).toString());
+    Assertions.assertEquals("Sol", searchResult.get(0).getProperName());
+    Assertions.assertEquals(0, searchResult.get(0).getStarID());
   }
 
   @Test
@@ -44,9 +43,8 @@ public class CsvParser4Test {
     } catch (FactoryFailureException | QueryParserFailureException | CsvParseFailureException e) {
       Assertions.fail(e);
     }
-    Assertions.assertEquals(
-        "TenStarEntity{starID='0', properName='Sol', x=0.0, y=0.0, z=0.0}",
-        searchResult.get(0).toString());
+    Assertions.assertEquals("Sol", searchResult.get(0).getProperName());
+    Assertions.assertEquals(0, searchResult.get(0).getStarID());
   }
 
   @Test
@@ -67,5 +65,28 @@ public class CsvParser4Test {
     Assertions.assertEquals(2, searchResult.size());
     Assertions.assertTrue(searchResult.get(0).getProperName().contains("Rigel Kentaurus"));
     Assertions.assertTrue(searchResult.get(1).getProperName().contains("Rigel Kentaurus"));
+  }
+
+  @Test
+  public void test4() throws IOException {
+    Star1EntityCreatorFromRow creatorFromRow = new Star1EntityCreatorFromRow();
+    CsvParser4<Star1Entity> parser = new CsvParser4<>(creatorFromRow);
+    List<Star1Entity> searchResult = null;
+    try {
+      FileReader reader = new FileReader("data/stars/ten-star.csv");
+      searchResult = parser.parseAndSearch(reader, "column 1 contains \"Rigel Kentaurus A\"", true);
+    } catch (FactoryFailureException | QueryParserFailureException | CsvParseFailureException e) {
+      Assertions.fail(e);
+    }
+    Assertions.assertEquals(1, searchResult.size());
+    Assertions.assertTrue(searchResult.get(0).getProperName().contains("Rigel Kentaurus A"));
+
+    try {
+      FileReader reader = new FileReader("data/stars/ten-star.csv");
+      searchResult = parser.parseAndSearch(reader, "column 2 contains \"Rigel Kentaurus A\"", true);
+    } catch (FactoryFailureException | QueryParserFailureException | CsvParseFailureException e) {
+      Assertions.fail(e);
+    }
+    Assertions.assertEquals(0, searchResult.size());
   }
 }

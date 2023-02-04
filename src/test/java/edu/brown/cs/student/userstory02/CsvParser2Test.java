@@ -88,4 +88,50 @@ public class CsvParser2Test {
     Assertions.assertEquals(1, searchResult.size(), searchResult.toString());
     Assertions.assertTrue(searchResult.get(0).contains("Barnard's Star"), "need'Barnard's Star'");
   }
+  @Test
+  public void test4() {
+    Assertions.assertThrows(CsvParseFailureException.class,()->{
+      String allContent = new String("xxx,xxx2\n1");
+      StringReader reader = new StringReader(allContent);
+      parser.parseAndSearch(reader, 1, "Star", true);
+    });
+  }
+
+
+  @Test
+  public void test5() {
+    byte[] bytes = new byte[0];
+    try {
+      bytes = Files.readAllBytes(Paths.get("data/stars/ten-star.csv"));
+    } catch (IOException e) {
+      Assertions.fail(e);
+    }
+    String allContent = new String(bytes);
+    StringReader reader = new StringReader(allContent);
+    List<List<String>> searchResult = null;
+    try {
+      searchResult = parser.parseAndSearch(reader, "ProperName", "Star");
+    } catch (CsvParseFailureException e) {
+      Assertions.fail(e);
+    }
+    Assertions.assertEquals(1, searchResult.size(), searchResult.toString());
+    Assertions.assertTrue(searchResult.get(0).contains("Barnard's Star"), "应该包含'Barnard's Star'");
+  }
+
+
+
+  @Test
+  public void test6() {
+    byte[] bytes = new byte[0];
+    try {
+      bytes = Files.readAllBytes(Paths.get("data/stars/ten-star.csv"));
+    } catch (IOException e) {
+      Assertions.fail(e);
+    }
+    String allContent = new String(bytes);
+    StringReader reader = new StringReader(allContent);
+    Assertions.assertThrows(CsvParseFailureException.class,()->{
+      parser.parseAndSearch(reader, "ProperNamexxxx", "Star");
+    });
+  }
 }

@@ -111,4 +111,43 @@ public class CsvFileParserTest {
         () ->
             parser.parseAndSearch("data/stars/ten-star.csv", "xxxxxxxxxxxx", "xxxxxxxxxxxxxxxxxx"));
   }
+
+  /*
+  Searching for values that are present, but are in the wrong column;
+   */
+  @Test
+  public void test8() {
+    CsvFileParser parser = new CsvFileParser();
+    List<List<String>> searchResult = null;
+    try {
+      searchResult = parser.parseAndSearch("data/stars/ten-star.csv", 1, "Star", true);
+    } catch (CsvParseFailureException e) {
+      Assertions.fail(e);
+    }
+    Assertions.assertEquals(1, searchResult.size(), searchResult.toString());
+    Assertions.assertTrue(searchResult.get(0).contains("Barnard's Star"), "应该包含'Barnard's Star'");
+
+    try {
+      searchResult = parser.parseAndSearch("data/stars/ten-star.csv", 2, "Star", true);
+    } catch (CsvParseFailureException e) {
+      Assertions.fail(e);
+    }
+    Assertions.assertEquals(0, searchResult.size(), searchResult.toString());
+  }
+
+  @Test
+  public void test9() {
+    CsvFileParser parser = new CsvFileParser();
+    Assertions.assertThrows(
+        CsvParseFailureException.class,
+        () -> parser.parseAndSearch("data/stars/ten-starxxxxxxxxx.csv", 1, "Star", true));
+  }
+
+  @Test
+  public void test10() {
+    CsvFileParser parser = new CsvFileParser();
+    Assertions.assertThrows(
+        CsvParseFailureException.class,
+        () -> parser.parseAndSearch("data/stars/ten-star.csv", "xxxxxx", "Star"));
+  }
 }

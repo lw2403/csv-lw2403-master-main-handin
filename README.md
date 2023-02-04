@@ -1,7 +1,7 @@
 ## Project Summary: 
 #### Name: CSV Parser
 #### Description: Built generic comma-separated value (CSV) parser library and search utility in Java
-#### Login & Hours: lwang58; ~18hours 
+#### Login & Hours: lwang58; ~30 hours 
 #### Github Link: https://github.com/lw2403/csv-lw2403-master-main-handin.git
 
 ## High level design decisions
@@ -50,8 +50,11 @@ that meet requirements into List<String>. This saves a lot of time and space com
 everything in List<List<String>> first.
 
 ## Errors & Bugs
-* After testing, there’s no bugs.
-* During the project, I handled errors in 3 main way:
+* After testing, there’s one problem I encountered with JaCoCo. I referred to Ed post and used a new pom.xml project provided
+by a staff member
+  * I get an error when typing mvn site however if i use the maven button on the top right of IntelliJ, I can run 
+mvn site and get a report from JaCoCo
+* During the project:
   * In sup/userstory01/userstory02/userstory03 program packages, I will catch and throw the error: EXAMPLE  catch (IOException e) { String errMsg = "ERROR: read error," + 
   e.getMessage(); throw new CsvParseFailureException(errMsg, e); }
   * In main, when there’s an error such as the user not entering a valid input, I will use System.err.println(errMsg) to let the user know the issue such as “Invalid Input!” When they enter -2 for column index
