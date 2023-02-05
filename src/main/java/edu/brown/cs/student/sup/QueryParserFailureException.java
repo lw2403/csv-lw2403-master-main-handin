@@ -1,6 +1,6 @@
 package edu.brown.cs.student.sup;
 
-/** Exception thrown when a Factory class fails. */
+/** Exception thrown when transform fails */
 public class QueryParserFailureException extends Exception {
 
   final String expr;

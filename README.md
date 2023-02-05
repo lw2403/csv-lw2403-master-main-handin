@@ -4,7 +4,6 @@
 #### Login & Hours: lwang58; ~30 hours 
 #### Github Link: https://github.com/lw2403/csv-lw2403-master-main-handin.git
 
-
 ## High level design decisions
 ### Classes & Interface
 2 Interfaces(CreatorFromRow and Query) are used by classes that I created below. 
@@ -68,14 +67,19 @@ I created a test file for each of the user stories. I also got rid of any warnin
   * test 2 searches csv without header using column name, search value
   * test 3-6 search for values that are, and aren’t, present in the CSV
   * test 7 tests exception with invalid columns
+  * test 8 searching for values that are present, but are in the wrong column
+  * test 9-10 column name or file not exist
 * User story02:
   * test 1 tests CSV data in FileReader 
   * test 2 tests CSV data in FileReader
-  * other tests test all rows, CSV data in StringReader
+  * other tests(3-8) test all rows, CSV data in StringReader with different cases
 * User story03:
   * test 1 tests Star1EntityCreatorFromRow() to transform to start1entity
+  * test 2 tests Star1EntityCreatorFromRow() to transform to start1entity
+  * test 3 test Star1EntityCreatorFromRow() to transform to start1entity with column name
 * Supplementary CS1430 Users tory: 
   * All the tests test expression, tests basic query, and query, or query, and not query
+  * e.g test 4 tests searching for values that are present, but are in the wrong column;
 
 For main, I tested the program through interacting with the terminal to check for errors such as invalid entry.
 

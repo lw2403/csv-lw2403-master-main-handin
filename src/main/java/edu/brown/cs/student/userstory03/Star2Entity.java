@@ -1,5 +1,6 @@
 package edu.brown.cs.student.userstory03;
 
+/** start2entity is an object representations for the data */
 public class Star2Entity {
 
   private String starID;

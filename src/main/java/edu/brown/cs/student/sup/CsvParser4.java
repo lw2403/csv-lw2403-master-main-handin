@@ -10,10 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * CsvParser's parseAndSearch method: return data that meet requirements Each row is represented by
- * an object type determined by creatorFromrow
- */
+/** Search condition is now an expression */
 public class CsvParser4<ROW> {
 
   private final CreatorFromRow<ROW> creatorFromRow;
@@ -22,6 +19,19 @@ public class CsvParser4<ROW> {
     this.creatorFromRow = creatorFromRow;
   }
 
+  /**
+   * CsvParser's parseAndSearch method: return Each row is represented by an object type determined
+   * by creatorFromrow
+   *
+   * @param reader read data from reader
+   * @param queryExpr query expression
+   * @param firstRowIsHeader whether first row is a header
+   * @return rows that meet requirements
+   * @throws FactoryFailureException When CreatorFromRow fails to work
+   * @throws QueryParserFailureException Transform fails
+   * @throws CsvParseFailureException File read or parse error such as file/column index/name does
+   *     not exist
+   */
   public List<ROW> parseAndSearch(Reader reader, String queryExpr, Boolean firstRowIsHeader)
       throws FactoryFailureException, QueryParserFailureException, CsvParseFailureException {
     String queryExprWithColumnIndex;

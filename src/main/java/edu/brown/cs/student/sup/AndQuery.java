@@ -7,7 +7,12 @@ public class AndQuery implements Query {
   private final Query subQuery1;
   private final Query subQuery2;
 
-  // and(???,???)
+  /**
+   * and(sub1, sub2)
+   *
+   * @param expr expression
+   * @throws QueryParserFailureException transform fails
+   */
   public AndQuery(String expr) throws QueryParserFailureException {
     String subQueryExpr = QueryParser.readSubQuery(expr); // expr1,expr2
     String[] exprArr = QueryParser.splitToTwoSubExpr(subQueryExpr);

@@ -7,6 +7,12 @@ public class OrQuery implements Query {
   private final Query subQuery1;
   private final Query subQuery2;
 
+  /**
+   * or (subquery)
+   *
+   * @param expr expression
+   * @throws QueryParserFailureException when transform fails
+   */
   public OrQuery(String expr) throws QueryParserFailureException {
     String subQueryExpr = QueryParser.readSubQuery(expr); // expr1,expr2
     String[] exprArr = QueryParser.splitToTwoSubExpr(subQueryExpr);

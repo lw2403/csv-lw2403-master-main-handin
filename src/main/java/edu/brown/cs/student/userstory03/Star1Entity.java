@@ -1,5 +1,6 @@
 package edu.brown.cs.student.userstory03;
 
+/** start1entity is an object representations for the data */
 public class Star1Entity {
 
   private int starID;

@@ -15,7 +15,8 @@ public class CsvFileParser {
   public List<List<String>> parseAndSearch(
       String fileName, int columnIndex, String containValue, boolean firstRowIsHeader)
       throws CsvParseFailureException {
-    try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName)) // 从reader中读数据
+    try (BufferedReader bufferedReader =
+        new BufferedReader(new FileReader(fileName)) // read data from reader
     ) {
       if (firstRowIsHeader) {
         bufferedReader.readLine();
@@ -33,13 +34,13 @@ public class CsvFileParser {
   }
 
   /**
-   * search via column name if column name is empty, search all if column name does not exist, throw
+   * search via column name if column name is empty search all if column name does not exist, throw
    * exception
    *
    * @param fileName csv file path
    * @param columnName the name of the column searched
    * @param containValue the value being searched
-   * @return all List<String> that meet requirements
+   * @return all rows that meet requirements
    * @throws CsvParseFailureException file read error
    */
   public List<List<String>> parseAndSearch(String fileName, String columnName, String containValue)

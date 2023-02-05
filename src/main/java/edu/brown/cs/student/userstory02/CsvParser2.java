@@ -5,6 +5,7 @@ import edu.brown.cs.student.userstory01.CsvParseFailureException;
 import java.io.*;
 import java.util.List;
 
+/** this class gets data from the Reader */
 public class CsvParser2 {
 
   public List<List<String>> parseAndSearch(

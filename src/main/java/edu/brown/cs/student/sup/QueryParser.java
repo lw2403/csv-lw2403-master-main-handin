@@ -4,6 +4,7 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/** transforms string expression to query object */
 public class QueryParser {
 
   public static Query parse(String expr) throws QueryParserFailureException {

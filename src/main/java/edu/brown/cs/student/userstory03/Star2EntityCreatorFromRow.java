@@ -4,8 +4,10 @@ import edu.brown.cs.student.main.CreatorFromRow;
 import edu.brown.cs.student.main.FactoryFailureException;
 import java.util.List;
 
+/** transforms data into start1entity object type */
 public class Star2EntityCreatorFromRow implements CreatorFromRow<Star2Entity> {
 
+  // creatorFromRow is strategy to create a star1entity object from row
   @Override
   public Star2Entity create(List<String> row) throws FactoryFailureException {
     Star2Entity entity = new Star2Entity();

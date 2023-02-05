@@ -10,7 +10,10 @@ import org.junit.jupiter.api.Test;
 
 public class CsvParser3Test {
 
-  /** Tests Star1EntityCreatorFromRow() to transform to start1entity */
+  /**
+   * Using multiple CreatorFromRow classes to extract CSV data in different formats. Tests
+   * Star1EntityCreatorFromRow() to transform to start1entity
+   */
   @Test
   public void test1() throws IOException {
     FileReader reader = new FileReader("data/stars/ten-star.csv");
@@ -18,15 +21,18 @@ public class CsvParser3Test {
     CsvParser3<Star1Entity> parser = new CsvParser3<>(creatorFromRow);
     List<Star1Entity> searchResult = null;
     try {
+      // searchResult is start1entity
       searchResult = parser.parseAndSearch(reader, 1, "Rigel Kentauru", true);
     } catch (FactoryFailureException | CsvParseFailureException e) {
       Assertions.fail(e);
     }
     Assertions.assertEquals(2, searchResult.size());
     Assertions.assertTrue(
-        searchResult.get(0).getProperName().contains("Rigel Kentauru"), "need'Rigel Kentauru'");
+        searchResult.get(0).getProperName().contains("Rigel Kentauru"),
+        "should have 'Rigel Kentauru'");
     Assertions.assertTrue(
-        searchResult.get(1).getProperName().contains("Rigel Kentauru"), "need'Rigel Kentauru'");
+        searchResult.get(1).getProperName().contains("Rigel Kentauru"),
+        "should have 'Rigel Kentauru'");
   }
 
   /** Tests Star2EntityCreatorFromRow() to transform to start2entity */
@@ -43,9 +49,11 @@ public class CsvParser3Test {
     }
     Assertions.assertEquals(2, searchResult.size());
     Assertions.assertTrue(
-        searchResult.get(0).getProperName().contains("Rigel Kentauru"), "need'Rigel Kentauru'");
+        searchResult.get(0).getProperName().contains("Rigel Kentauru"),
+        "should have 'Rigel Kentauru'");
     Assertions.assertTrue(
-        searchResult.get(1).getProperName().contains("Rigel Kentauru"), "need'Rigel Kentauru'");
+        searchResult.get(1).getProperName().contains("Rigel Kentauru"),
+        "should have 'Rigel Kentauru'");
   }
 
   /** Tests Star1EntityCreatorFromRow() to transform to start1entity with column name */

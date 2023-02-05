@@ -4,7 +4,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-/** tests userstory01 search */
+/** tests userstory01 search CSV data with and without column headers; */
 public class CsvFileParserTest {
 
   /** test 1 searches csv with header using column index, search value */
@@ -27,7 +27,7 @@ public class CsvFileParserTest {
     }
   }
 
-  /** test 2 searches csv without header using column name, search value */
+  /** test 2 searches csv without header using column index, search value */
   @Test
   public void test2() {
     CsvFileParser parser = new CsvFileParser();
@@ -42,7 +42,10 @@ public class CsvFileParserTest {
         searchResult.get(0).contains("ProperName"), "should include 'ProperName'");
   }
 
-  /** Test 3-6 search for values that are, and aren’t, present in the CSV; */
+  /**
+   * Test 3-6 search for values that are, and aren’t, present in the CSV; Test 3 uses column name to
+   * get rows containing "barnard's star"
+   */
   @Test
   public void test3() {
     CsvFileParser parser = new CsvFileParser();
@@ -57,6 +60,10 @@ public class CsvFileParserTest {
         searchResult.get(0).contains("Barnard's Star"), "should include 'Barnard's Star'");
   }
 
+  /**
+   * Searching for values that are, and aren’t, present in the CSV; using column name to find value
+   * that does not exist xxxxxxxx
+   */
   @Test
   public void test4() {
     CsvFileParser parser = new CsvFileParser();
@@ -112,9 +119,7 @@ public class CsvFileParserTest {
             parser.parseAndSearch("data/stars/ten-star.csv", "xxxxxxxxxxxx", "xxxxxxxxxxxxxxxxxx"));
   }
 
-  /*
-  Searching for values that are present, but are in the wrong column;
-   */
+  /** Searching for values that are present, but are in the wrong column; */
   @Test
   public void test8() {
     CsvFileParser parser = new CsvFileParser();
@@ -125,7 +130,8 @@ public class CsvFileParserTest {
       Assertions.fail(e);
     }
     Assertions.assertEquals(1, searchResult.size(), searchResult.toString());
-    Assertions.assertTrue(searchResult.get(0).contains("Barnard's Star"), "应该包含'Barnard's Star'");
+    Assertions.assertTrue(
+        searchResult.get(0).contains("Barnard's Star"), "include 'Barnard's Star'");
 
     try {
       searchResult = parser.parseAndSearch("data/stars/ten-star.csv", 2, "Star", true);
@@ -135,6 +141,7 @@ public class CsvFileParserTest {
     Assertions.assertEquals(0, searchResult.size(), searchResult.toString());
   }
 
+  /** file path does not exist */
   @Test
   public void test9() {
     CsvFileParser parser = new CsvFileParser();
@@ -143,6 +150,7 @@ public class CsvFileParserTest {
         () -> parser.parseAndSearch("data/stars/ten-starxxxxxxxxx.csv", 1, "Star", true));
   }
 
+  /** column name does not exist */
   @Test
   public void test10() {
     CsvFileParser parser = new CsvFileParser();
