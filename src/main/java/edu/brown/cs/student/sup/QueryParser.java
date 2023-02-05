@@ -10,12 +10,12 @@ public class QueryParser {
   /** transforms string expression to query object */
   public static Query parse(String expr) throws QueryParserFailureException {
     // basic query
-    // regex
     // ^ start of string
     // -? any signs
     // [0-9]+ any integer
     // .* any string
     if (expr.matches("^-?[0-9]+.*")) {
+      // expression matches regex
       return new BasicQuery(expr);
     } else if (expr.toLowerCase().startsWith("and")) {
       return new AndQuery(expr);
