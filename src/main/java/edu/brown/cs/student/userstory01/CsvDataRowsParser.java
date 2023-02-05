@@ -25,6 +25,7 @@ public class CsvDataRowsParser {
     while ((line = bufferedReader.readLine()) != null) {
       String[] arr = line.split(",");
       if (columnIndex != -1) { // only search one column
+        //search whether a column includes the value, and add into result
         if (columnIndex >= arr.length) {
           String errMsg =
               "column index out of range,column index is "

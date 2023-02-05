@@ -8,7 +8,6 @@ public class NotQuery implements Query {
 
   /**
    * not (subquery)
-   *
    * @param expr expression
    * @throws QueryParserFailureException transform fails
    */
@@ -19,6 +18,7 @@ public class NotQuery implements Query {
 
   @Override
   public boolean isMatch(List<String> row) {
+
     return !subQuery.isMatch(row);
   }
 }

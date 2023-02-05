@@ -9,7 +9,6 @@ public class OrQuery implements Query {
 
   /**
    * or (subquery)
-   *
    * @param expr expression
    * @throws QueryParserFailureException when transform fails
    */

@@ -15,7 +15,6 @@ public class CsvParser3<ROW> {
   private final CsvParser2 csvParser2;
   /**
    * constructor
-   *
    * @param creatorFromRow CreatorFromRow Interface
    */
   public CsvParser3(CreatorFromRow<ROW> creatorFromRow) {
@@ -23,6 +22,12 @@ public class CsvParser3<ROW> {
     this.csvParser2 = new CsvParser2();
   }
 
+  /**
+   * strategy to transform result to right object type
+   * @param rows
+   * @return list with object type of choice
+   * @throws FactoryFailureException
+   */
   private List<ROW> transfer(List<List<String>> rows) throws FactoryFailureException {
     List<ROW> list = new ArrayList<>(rows.size());
     for (List<String> row : rows) {
@@ -31,12 +36,14 @@ public class CsvParser3<ROW> {
     return list;
   }
 
+  // search via column index and return results
   public List<ROW> parseAndSearch(
       Reader reader, int columnIndex, String containValue, boolean firstRowIsHeader)
       throws CsvParseFailureException, FactoryFailureException {
     return transfer(csvParser2.parseAndSearch(reader, columnIndex, containValue, firstRowIsHeader));
   }
 
+  //search via column name and return results
   public List<ROW> parseAndSearch(Reader reader, String columnName, String containValue)
       throws CsvParseFailureException, FactoryFailureException {
     return transfer(csvParser2.parseAndSearch(reader, columnName, containValue));

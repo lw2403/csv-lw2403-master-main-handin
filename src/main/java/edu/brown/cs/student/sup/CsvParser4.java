@@ -20,9 +20,7 @@ public class CsvParser4<ROW> {
   }
 
   /**
-   * CsvParser's parseAndSearch method: return Each row is represented by an object type determined
-   * by creatorFromrow
-   *
+   * CsvParser's parseAndSearch method: return Each row is represented by an object type determined by creatorFromrow
    * @param reader read data from reader
    * @param queryExpr query expression
    * @param firstRowIsHeader whether first row is a header
@@ -35,6 +33,7 @@ public class CsvParser4<ROW> {
   public List<ROW> parseAndSearch(Reader reader, String queryExpr, Boolean firstRowIsHeader)
       throws FactoryFailureException, QueryParserFailureException, CsvParseFailureException {
     String queryExprWithColumnIndex;
+    //read data
     try (BufferedReader bufferedReader = new BufferedReader(reader)) {
       if (firstRowIsHeader) {
         String headerLine = bufferedReader.readLine();
@@ -44,12 +43,16 @@ public class CsvParser4<ROW> {
       } else {
         queryExprWithColumnIndex = queryExpr;
       }
+      //query interface
       Query query = QueryParser.parse(queryExprWithColumnIndex);
       List<ROW> result = new ArrayList<>(); // initialize a new empty object to store strings
+      //row from reader
       String line;
       while ((line = bufferedReader.readLine()) != null) {
         String[] arr = line.split(",");
+        //change from array to list
         List<String> list = Arrays.asList(arr);
+        //check if data matches query
         if (query.isMatch(list)) {
           result.add(creatorFromRow.create(list));
         }

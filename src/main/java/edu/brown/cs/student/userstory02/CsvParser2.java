@@ -7,7 +7,7 @@ import java.util.List;
 
 /** this class gets data from the Reader */
 public class CsvParser2 {
-
+  // returns rows, with column index
   public List<List<String>> parseAndSearch(
       Reader reader, int columnIndex, String containValue, boolean firstRowIsHeader)
       throws CsvParseFailureException {
@@ -23,6 +23,7 @@ public class CsvParser2 {
   }
 
   /**
+   * return rows, with column name
    * @param reader StringReader or FileReader or Other Reader
    * @param columnName column name
    * @param containValue search value

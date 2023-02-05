@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * this interface transforms a row into an object type T
- *
  * @param <T> object type
  */
 public interface CreatorFromRow<T> {

@@ -4,11 +4,17 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** transforms string expression to query object */
+
 public class QueryParser {
 
+  /** transforms string expression to query object */
   public static Query parse(String expr) throws QueryParserFailureException {
     // basic query
+    // regex
+    // ^ start of string
+    // -? any signs
+    // [0-9]+ any integer
+    // .* any string
     if (expr.matches("^-?[0-9]+.*")) {
       return new BasicQuery(expr);
     } else if (expr.toLowerCase().startsWith("and")) {
@@ -58,19 +64,28 @@ public class QueryParser {
   }
 
   /**
-   * column 1 contains "hangman" -> 0=hangman column name contains "hangman" -> 0=hangman regex
-   * replace
-   *
+   * column 1 contains "hangman" -> 0=hangman
+   * column name contains "hangman" -> 0=hangman
+   * regex replace
    * @param queryExpr expression with column name
    * @param columnNames column names
    * @return expression with column index
    */
   public static String exprTransferColumnNameToColumnIndex(String queryExpr, String[] columnNames)
       throws QueryParserFailureException {
+    //regex
+    //column = column
+    // \\s+ any blanks
+    // .*? any string less
+    // () group
+    //\" \"string
     String regexExpr = "column\\s+(.*?)\\s+contains\\s+\"(.*?)\"";
     Pattern pattern = Pattern.compile(regexExpr);
     Matcher matcher = pattern.matcher(queryExpr);
     StringBuilder sbr = new StringBuilder();
+    // change column name to column index
+    //  column 1 contains "hangman" -> 0=hangman
+    //  column name contains "hangman" -> 0=hangman regex
     while (matcher.find()) {
       String columnIndexOrColumnName = matcher.group(1);
       String containValue = matcher.group(2);

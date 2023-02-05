@@ -13,11 +13,11 @@ public class BasicQuery implements Query {
 
   /**
    * column index = string e.g 1 = abc
-   *
    * @param expr expression
    * @throws QueryParserFailureException Transform fails
    */
   public BasicQuery(String expr) throws QueryParserFailureException {
+
     String[] arr = expr.split("=");
     if (arr.length != 2) {
       throw new QueryParserFailureException(expr);
