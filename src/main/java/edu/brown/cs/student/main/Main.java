@@ -18,6 +18,7 @@ public final class Main {
 
   /**
    * The initial method called when execution begins.
+   *
    * @param args An array of command line arguments
    */
   public static void main(String[] args) {
@@ -46,16 +47,16 @@ public final class Main {
         case 2 -> userStory02(sc);
         case 3 -> userStory03(sc);
         case 4 -> sup(sc);
-        //else
+          // else
         default -> System.err.println("input error!");
       }
     }
   }
 
-  //strings input that meet csv format
+  // strings input that meet csv format
   private StringReader getCsvTxtStringReaderSystemIn(Scanner sc) {
     System.out.println("input csv String, blank line means end:");
-    //string that is easy to change
+    // string that is easy to change
     StringBuilder buffer = new StringBuilder();
     String line;
     while ((line = sc.nextLine()) != null && line.trim().length() != 0) {
@@ -68,7 +69,7 @@ public final class Main {
     return new StringReader(buffer.toString());
   }
 
-  //read from string
+  // read from string
   private void userStory02ReadFromString(Scanner sc) {
 
     StringReader reader = getCsvTxtStringReaderSystemIn(sc);
@@ -88,7 +89,7 @@ public final class Main {
     userStory02searchAndPrint(reader, columnIndex, searchValue, firstRowIsHeader);
   }
 
-  //read from file
+  // read from file
   private void userStory02ReadFromFile(Scanner sc) {
     String filePath = inputFilePath(sc);
 
@@ -130,9 +131,9 @@ public final class Main {
     System.out.println("read from String or File?(string/file):");
     String csvTxtFrom = sc.nextLine().toLowerCase();
     switch (csvTxtFrom) {
-      //read from string
+        // read from string
       case "string" -> userStory02ReadFromString(sc);
-      //read from file
+        // read from file
       case "file" -> userStory02ReadFromFile(sc);
       default -> System.err.println("input error!");
     }
@@ -240,7 +241,7 @@ public final class Main {
     if (transferRowToWhichType == null) {
       return;
     }
-    //transform to star1 object
+    // transform to star1 object
     if ("star1".equals(transferRowToWhichType)) {
       CreatorFromRow<Star1Entity> creatorFromRow = new Star1EntityCreatorFromRow();
       CsvParser4<Star1Entity> parser = new CsvParser4<>(creatorFromRow);
@@ -258,7 +259,7 @@ public final class Main {
       } catch (CsvParseFailureException | FactoryFailureException | QueryParserFailureException e) {
         System.err.println(e.getMessage());
       }
-      //transform to star2 object
+      // transform to star2 object
     } else if ("star2".equals(transferRowToWhichType)) {
       CreatorFromRow<Star2Entity> creatorFromRow = new Star2EntityCreatorFromRow();
       CsvParser4<Star2Entity> parser = new CsvParser4<>(creatorFromRow);
@@ -281,7 +282,7 @@ public final class Main {
 
   private String inputFilePath(Scanner sc) {
     System.out.println("input csv file path:");
-    //delete space before and after
+    // delete space before and after
     return sc.nextLine().trim();
   }
 

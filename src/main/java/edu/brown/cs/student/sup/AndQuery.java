@@ -9,6 +9,7 @@ public class AndQuery implements Query {
 
   /**
    * and(sub1, sub2)
+   *
    * @param expr expression
    * @throws QueryParserFailureException transform fails
    */

@@ -10,6 +10,7 @@ public class CsvDataRowsParser {
 
   /**
    * checks which data meet requirements. It's also used and called in other user stories
+   *
    * @param columnIndex if columnIndex is -1:search all; if others search the corresponding columns
    * @param containValue value to search for
    * @return rows that meet requirements
@@ -24,7 +25,7 @@ public class CsvDataRowsParser {
     while ((line = bufferedReader.readLine()) != null) {
       String[] arr = line.split(",");
       if (columnIndex != -1) { // only search one column
-        //search whether a column includes the value, and add into result
+        // search whether a column includes the value, and add into result
         if (columnIndex >= arr.length) {
           String errMsg =
               "column index out of range,column index is "

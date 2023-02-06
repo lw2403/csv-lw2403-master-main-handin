@@ -5,8 +5,7 @@ import edu.brown.cs.student.userstory01.CsvParseFailureException;
 import java.io.*;
 import java.util.List;
 
-/** this class gets data from the Reader
- * test with file or string reader*/
+/** this class gets data from the Reader test with file or string reader */
 public class CsvParser2 {
   // returns rows, with column index
   public List<List<String>> parseAndSearch(
@@ -16,7 +15,7 @@ public class CsvParser2 {
       if (firstRowIsHeader) {
         bufferedReader.readLine();
       }
-      //calls CsvDataRowsParser
+      // calls CsvDataRowsParser
       return CsvDataRowsParser.parseAndSearch(bufferedReader, columnIndex, containValue);
     } catch (IOException e) {
       String errMsg = "ERROR: read error," + e.getMessage();
@@ -26,6 +25,7 @@ public class CsvParser2 {
 
   /**
    * return rows, with column name
+   *
    * @param reader StringReader or FileReader or Other Reader
    * @param columnName column name
    * @param containValue search value

@@ -15,6 +15,7 @@ public class CsvParser3<ROW> {
   private final CsvParser2 csvParser2;
   /**
    * constructor
+   *
    * @param creatorFromRow CreatorFromRow Interface
    */
   public CsvParser3(CreatorFromRow<ROW> creatorFromRow) {
@@ -25,6 +26,7 @@ public class CsvParser3<ROW> {
 
   /**
    * strategy to transform result to right object type
+   *
    * @param rows
    * @return list with object type of choice
    * @throws FactoryFailureException
@@ -44,7 +46,7 @@ public class CsvParser3<ROW> {
     return transfer(csvParser2.parseAndSearch(reader, columnIndex, containValue, firstRowIsHeader));
   }
 
-  //search via column name and return results
+  // search via column name and return results
   public List<ROW> parseAndSearch(Reader reader, String columnName, String containValue)
       throws CsvParseFailureException, FactoryFailureException {
     return transfer(csvParser2.parseAndSearch(reader, columnName, containValue));

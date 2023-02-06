@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Uses CsvDataRowsParser Parse file based on different cases (e.g with or without header)
- * User can search based on column name or column index number
+ * Uses CsvDataRowsParser Parse file based on different cases (e.g with or without header) User can
+ * search based on column name or column index number
  */
 public class CsvFileParser {
-  //parseAndSearch method
+  // parseAndSearch method
   public List<List<String>> parseAndSearch(
       String fileName, int columnIndex, String containValue, boolean firstRowIsHeader)
       throws CsvParseFailureException {
@@ -21,7 +21,7 @@ public class CsvFileParser {
       if (firstRowIsHeader) { // read first line
         bufferedReader.readLine();
       }
-      //call CsvDataRowsParser
+      // call CsvDataRowsParser
       return CsvDataRowsParser.parseAndSearch(bufferedReader, columnIndex, containValue);
     } catch (FileNotFoundException e) {
       String errMsg = "ERROR:" + fileName + " not Found!";
@@ -63,11 +63,11 @@ public class CsvFileParser {
           columnIndex = i;
         }
       }
-      //if column name not found in header row
+      // if column name not found in header row
       if (columnIndex == -1) {
         throw new CsvParseFailureException("column name (" + columnName + ") not found in csv");
       } else {
-        //call CsvDataRowsParser
+        // call CsvDataRowsParser
         return CsvDataRowsParser.parseAndSearch(bufferedReader, columnIndex, containValue);
       }
     } catch (FileNotFoundException e) {

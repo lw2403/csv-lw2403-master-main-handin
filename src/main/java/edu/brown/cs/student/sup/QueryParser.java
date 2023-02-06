@@ -4,7 +4,6 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class QueryParser {
 
   /** transforms string expression to query object */
@@ -64,21 +63,21 @@ public class QueryParser {
   }
 
   /**
-   * column 1 contains "hangman" -> 0=hangman
-   * column name contains "hangman" -> 0=hangman
-   * regex replace
+   * column 1 contains "hangman" -> 0=hangman column name contains "hangman" -> 0=hangman regex
+   * replace
+   *
    * @param queryExpr expression with column name
    * @param columnNames column names
    * @return expression with column index
    */
   public static String exprTransferColumnNameToColumnIndex(String queryExpr, String[] columnNames)
       throws QueryParserFailureException {
-    //regex changes from column 1 contains "hangman" -> 0=hangman
-    //column = column
+    // regex changes from column 1 contains "hangman" -> 0=hangman
+    // column = column
     // \\s+ any blanks
     // .*? any string less
     // () group
-    //\" \"string
+    // \" \"string
     String regexExpr = "column\\s+(.*?)\\s+contains\\s+\"(.*?)\"";
     Pattern pattern = Pattern.compile(regexExpr);
     Matcher matcher = pattern.matcher(queryExpr);

@@ -13,6 +13,7 @@ public class BasicQuery implements Query {
 
   /**
    * column index = string e.g 1 = abc
+   *
    * @param expr expression
    * @throws QueryParserFailureException Transform fails
    */

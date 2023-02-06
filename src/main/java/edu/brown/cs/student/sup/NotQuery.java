@@ -8,6 +8,7 @@ public class NotQuery implements Query {
 
   /**
    * not (subquery)
+   *
    * @param expr expression
    * @throws QueryParserFailureException transform fails
    */
