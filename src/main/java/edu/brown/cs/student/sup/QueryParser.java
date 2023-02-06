@@ -73,7 +73,7 @@ public class QueryParser {
    */
   public static String exprTransferColumnNameToColumnIndex(String queryExpr, String[] columnNames)
       throws QueryParserFailureException {
-    //regex
+    //regex changes from column 1 contains "hangman" -> 0=hangman
     //column = column
     // \\s+ any blanks
     // .*? any string less

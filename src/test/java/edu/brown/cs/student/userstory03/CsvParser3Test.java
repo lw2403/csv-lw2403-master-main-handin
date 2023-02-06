@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 public class CsvParser3Test {
 
   /**
-   * Using multiple CreatorFromRow classes to extract CSV data in different formats. Tests
-   * Star1EntityCreatorFromRow() to transform to start1entity
+   * Using multiple CreatorFromRow classes to extract CSV data in different formats.
+   * Tests Star1EntityCreatorFromRow() to transform to start1entity
    */
   @Test
   public void test1() throws IOException {

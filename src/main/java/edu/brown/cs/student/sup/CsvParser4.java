@@ -28,8 +28,10 @@ public class CsvParser4<ROW> {
    * @throws FactoryFailureException When CreatorFromRow fails to work
    * @throws QueryParserFailureException Transform fails
    * @throws CsvParseFailureException File read or parse error such as file/column index/name does
-   *     not exist
+   * not exist
    */
+
+  //changes from 3: String queryExpr
   public List<ROW> parseAndSearch(Reader reader, String queryExpr, Boolean firstRowIsHeader)
       throws FactoryFailureException, QueryParserFailureException, CsvParseFailureException {
     String queryExprWithColumnIndex;

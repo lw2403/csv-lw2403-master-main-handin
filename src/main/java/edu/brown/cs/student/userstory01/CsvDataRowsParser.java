@@ -10,7 +10,6 @@ public class CsvDataRowsParser {
 
   /**
    * checks which data meet requirements. It's also used and called in other user stories
-   *
    * @param columnIndex if columnIndex is -1:search all; if others search the corresponding columns
    * @param containValue value to search for
    * @return rows that meet requirements

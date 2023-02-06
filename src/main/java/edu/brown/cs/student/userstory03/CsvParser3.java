@@ -19,6 +19,7 @@ public class CsvParser3<ROW> {
    */
   public CsvParser3(CreatorFromRow<ROW> creatorFromRow) {
     this.creatorFromRow = creatorFromRow;
+    // uses csvParser 2 to read or parse file
     this.csvParser2 = new CsvParser2();
   }
 

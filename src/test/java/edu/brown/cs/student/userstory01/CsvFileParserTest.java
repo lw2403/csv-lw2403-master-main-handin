@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 public class CsvFileParserTest {
 
   /** test 1 searches csv with header using column index, search value */
+  //JUNIT tests
+  //Assertions class with assertEquals, assertTrue...
+  //Assertions.fail(e) similar to throw error
+  //@test test method
   @Test
   public void test1() {
     CsvFileParser parser = new CsvFileParser();
@@ -77,6 +81,7 @@ public class CsvFileParserTest {
     Assertions.assertEquals(0, searchResult.size(), searchResult.toString());
   }
 
+  //containValue exists
   @Test
   public void test5() {
     CsvFileParser parser = new CsvFileParser();
@@ -91,6 +96,7 @@ public class CsvFileParserTest {
         searchResult.get(0).contains("Barnard's Star"), "should include 'Barnard's Star'");
   }
 
+  //containValue does not exists
   @Test
   public void test6() {
     CsvFileParser parser = new CsvFileParser();
